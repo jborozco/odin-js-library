@@ -44,7 +44,10 @@ function addBookToLibrary() {
         `
 
     }
-    console.table(myLibrary)
+    //clear fields
+    titleValue = "";
+    authorValue = "";
+    dateValue = "";
 
 };
 
@@ -53,4 +56,3 @@ function addBookToLibrary() {
 
 addBookToLibrary();
 
-document.getElementById('addBook').addEventListener('click', () => addBookToLibrary());
