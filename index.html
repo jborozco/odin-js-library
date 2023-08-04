@@ -11,6 +11,13 @@
 </head>
 
 <body>
+    <header>
+        <div id="logo">booklist</div>
+
+        <button id="addBook">+ Add a new book</button>
+
+    </header>
+
     <div id="left-container">
         <form action="" id="addBook" onsubmit="addBookToLibrary();return false">
             <label for="book-title">Book Title</label>
@@ -23,7 +30,9 @@
         </form>
     </div>
     <div id="right-container">
-        <div id="library"></div>
+        <div id="library">
+
+        </div>
     </div>
 
     <script src="script.js"></script>
