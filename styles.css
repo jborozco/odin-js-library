@@ -1,4 +1,50 @@
 * {
-    padding: 10px;
-    border: solid 1px salmon;
+    box-sizing: border-box;
+}
+
+html {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    width: 100vw;
+    height: 100vh;
+    background-color: #efefef;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: start;
+
+}
+
+form,
+.library-book {
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.2);
+    padding: 20px;
+    margin: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px
+}
+
+form input {
+    appearance: none;
+    background: #efefef;
+    border: solid 1px #e1e1e1;
+    border-radius: 2px;
+
+}
+
+#right-container {
+    width: 640px;
+
+}
+
+#library {
+    display: grid;
+    grid-template-columns: 33.33% 33.33% 33.33%;
+    gap: 10px
 }
