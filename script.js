@@ -5,9 +5,26 @@ let myLibrary = [
     {
         title: "Les misérables",
         author: "Victor Hugo",
-        bookDate: 1862
+        bookDate: 875,
+        isRead: true
 
-    }
+    },
+    {
+        title: "L'étranger",
+        author: "Albert Camus",
+        bookDate: 351,
+        isRead: true
+
+    },
+    {
+        title: "Guerre et Paix",
+        author: "Léon Tolstoï",
+        bookDate: 1785,
+        isRead: false
+
+    },
+
+
 ];
 
 
@@ -17,9 +34,13 @@ function Book() {
     this.title = document.getElementById('book-title').value;
     this.author = document.getElementById('book-author').value;
     this.bookDate = document.getElementById('book-date').value;
-
+    this.isRead = document.getElementById('book-read').checked;
 
 }
+
+
+
+
 
 //Toggle the book form
 function toggleForm() {
@@ -32,16 +53,33 @@ function toggleForm() {
     formContainer.classList.toggle("visible");
 }
 
+//Conditional DOM display 
+function isReadMessage(book) {
+    if (book.isRead) {
+        return 'Read'
+    }
+    else {
+        return 'Not read'
+    }
+}
+
 function displayBooks() {
     //Update DOM Library with all books
     library.innerHTML = ""; //reset library
-    for (let i = 0; i < myLibrary.length; i++) { //update library with current library
+    for (let i = 0; i < myLibrary.length; i++) {
+        //update library with current library
         library.innerHTML += `
             <div class="library-book">
-                <p class="library-book-title">${myLibrary[i].title}</p>
-                <p class="library-book-author">${myLibrary[i].author}</p>
-                <p class="library-book-date">${myLibrary[i].bookDate}</p>
-                <button class="library-book-delete" value="${i}" onclick="deleteBook(event)">Delete</button>
+                <div class="book-header">
+                    <p class="library-book-title">${myLibrary[i].title}</p>
+                    <input type="image" class="library-book-delete" value="${i}" onclick="deleteBook(event)" src="img/delete.svg">
+                </div>
+                <p class="library-book-author">by ${myLibrary[i].author}</p>
+                <p class="library-book-date">${myLibrary[i].bookDate} pages</p>
+                <p class="library-book-read">${isReadMessage(myLibrary[i])}</p>
+                <button class="library-book-read-switch" value="${i}" onclick="toggleReading(event)">change</button
+
+                
             </div>
             `
     }
@@ -50,21 +88,26 @@ function displayBooks() {
 
 
 function addBookToLibrary() {
-
     //Add a book to myLibrary
     let newBook = new Book();
     myLibrary.push(newBook);
     //Update DOM
     displayBooks();
     toggleForm()
-
 };
 
 function deleteBook(event) {
     let position = event.target.value;
     myLibrary.splice(position, 1);
     displayBooks();
+}
 
+
+
+function toggleReading(event) {
+    let position = event.target.value;
+    myLibrary[position].isRead = !myLibrary[position].isRead;
+    displayBooks();
 
 }
 
@@ -72,5 +115,4 @@ function deleteBook(event) {
 
 //Initiate DOM Library on first load
 displayBooks();
-
 
