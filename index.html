@@ -12,20 +12,35 @@
 
 <body>
     <header>
-        <div id="logo">booklist</div>
+        <h1 id="logo">booklist</h1>
 
-        <button id="addBook">+ Add a new book</button>
+        <button id="addBookBtn" onclick="toggleForm()">+ Add a new book</button>
 
     </header>
 
-    <div id="left-container">
+    <div id="form-container">
         <form action="" id="addBook" onsubmit="addBookToLibrary();return false">
+            <fieldset class="form-header">
+                <h1>Add a new book </h1>
+                <button type="button" id="close-form" onclick="toggleForm()">X</button>
+            </fieldset>
             <label for="book-title">Book Title</label>
             <input type="text" id="book-title" required>
+
             <label for="book-author">Author name</label>
             <input type="text" id="book-author" required>
-            <label for="book-date"> Release Date </label>
-            <input type="text" id="book-date" required></input>
+
+            <label for="book-date"> Number of pages </label>
+            <input type="number" id="book-date" required></input>
+
+            <fieldset>
+                <label for="book-read">Have you read the book ?</label>
+
+                <input type="checkbox" id="book-date"></input>
+
+
+            </fieldset>
+
             <button type="submit" id="addBook"> Add new book </button>
         </form>
     </div>

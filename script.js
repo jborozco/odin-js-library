@@ -1,7 +1,5 @@
 let library = document.getElementById('library');
 
-let newBook;
-
 
 let myLibrary = [
     {
@@ -12,17 +10,26 @@ let myLibrary = [
     }
 ];
 
-const initialLibrary = myLibrary;
 
+//Book obj constructor
 function Book() {
-    titleValue = document.getElementById('book-title').value;
-    authorValue = document.getElementById('book-author').value;
-    dateValue = document.getElementById('book-date').value;
+
+    this.title = document.getElementById('book-title').value;
+    this.author = document.getElementById('book-author').value;
+    this.bookDate = document.getElementById('book-date').value;
 
 
-    this.title = titleValue;
-    this.author = authorValue;
-    this.bookDate = dateValue;
+}
+
+//Toggle the book form
+function toggleForm() {
+    //Reset form before toogle  
+    document.getElementById('book-title').value = "";
+    document.getElementById('book-author').value = "";
+    document.getElementById('book-date').value = "";
+    //Toogle
+    let formContainer = document.getElementById("form-container");
+    formContainer.classList.toggle("visible");
 }
 
 function displayBooks() {
@@ -34,25 +41,32 @@ function displayBooks() {
                 <p class="library-book-title">${myLibrary[i].title}</p>
                 <p class="library-book-author">${myLibrary[i].author}</p>
                 <p class="library-book-date">${myLibrary[i].bookDate}</p>
+                <button class="library-book-delete" value="${i}" onclick="deleteBook(event)">Delete</button>
             </div>
             `
     }
-    //Clear form fields
-    titleValue = "";
-    authorValue = "";
-    dateValue = "";
+
 }
 
 
 function addBookToLibrary() {
 
     //Add a book to myLibrary
-    newBook = new Book();
+    let newBook = new Book();
     myLibrary.push(newBook);
     //Update DOM
     displayBooks();
+    toggleForm()
 
 };
+
+function deleteBook(event) {
+    let position = event.target.value;
+    myLibrary.splice(position, 1);
+    displayBooks();
+
+
+}
 
 
 
