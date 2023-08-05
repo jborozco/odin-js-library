@@ -63,24 +63,42 @@ function isReadMessage(book) {
     }
 }
 
+function showChecked(book) {
+    if (book.isRead) {
+        return 'checked'
+    }
+    else {
+        return ''
+    }
+}
+
 function displayBooks() {
     //Update DOM Library with all books
     library.innerHTML = ""; //reset library
     for (let i = 0; i < myLibrary.length; i++) {
         //update library with current library
         library.innerHTML += `
-            <div class="library-book">
-                <div class="book-header">
-                    <p class="library-book-title">${myLibrary[i].title}</p>
-                    <input type="image" class="library-book-delete" value="${i}" onclick="deleteBook(event)" src="img/delete.svg">
-                </div>
-                <p class="library-book-author">by ${myLibrary[i].author}</p>
-                <p class="library-book-date">${myLibrary[i].bookDate} pages</p>
-                <p class="library-book-read">${isReadMessage(myLibrary[i])}</p>
-                <button class="library-book-read-switch" value="${i}" onclick="toggleReading(event)">change</button
-
-                
+        <div class="library-book">
+        <div class="book-header">
+            <div class="book-header-line1">
+                <p class="library-book-title">${myLibrary[i].title}</p>
+                <input type="image" class="library-book-delete" value="${i}" onclick="deleteBook(event)"
+                    src="img/delete.svg">
             </div>
+            <p class="library-book-author">by ${myLibrary[i].author}</p>
+            <p class="library-book-date">${myLibrary[i].bookDate} pages</p>
+
+        </div>
+        <div class="book-footer">
+            <div class="switch-area">
+                <label class="switch">
+                    <input type="checkbox" value="${i}" onclick="toggleReading(event)">
+                    <span class="slider round ${showChecked(myLibrary[i])}"></span>
+                </label>
+                <p>${isReadMessage(myLibrary[i])}</p>
+            </div>
+        </div>
+    </div>
             `
     }
 
