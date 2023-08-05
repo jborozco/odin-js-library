@@ -82,8 +82,7 @@ function displayBooks() {
         <div class="book-header">
             <div class="book-header-line1">
                 <p class="library-book-title">${myLibrary[i].title}</p>
-                <input type="image" class="library-book-delete" value="${i}" onclick="deleteBook(event)"
-                    src="img/delete.svg">
+                <input type="image" class="icon" class="library-book-delete" value="${i}"  onclick="deleteBook(event)" src="img/delete.svg">
             </div>
             <p class="library-book-author">by ${myLibrary[i].author}</p>
             <p class="library-book-date">${myLibrary[i].bookDate} pages</p>
